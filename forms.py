@@ -20,6 +20,12 @@ class RegistrationForm(FlaskForm):
     accept_tos = BooleanField('I accept the TOS', validators=[DataRequired()])
     submit = SubmitField('Register')
 
+class UserAreaForm(FlaskForm):
+    placename = StringField('Fishing Place Name', validators=[Length(min=4)])
+    lant = StringField('Fishing Base Lant', validators=[Length(min=4)])
+    long = StringField('Fishing Base Long', validators=[Length(min=4)])
+    submit = SubmitField('Add place')
+
 class SendForm(FlaskForm):
     message = StringField('message', validators=[DataRequired()])
     submit = SubmitField('Send')
