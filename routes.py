@@ -10,15 +10,18 @@ import datetime
 @fl_app.route('/index')
 def index():
     recs = DB.query("select * from fishing_places")
-    print(recs[1][1])
+
     names = [];
     lants = [];
     longs = [];
+    bases = [];
     for rec in recs:
         names.append(rec[1])
         lants.append(rec[2])
         longs.append(rec[3])
-    return render_template('index.html', names = names, lants=lants, long=longs)
+        bases.append(rec)
+
+    return render_template('index.html', names = names, lants=lants, long=longs, bases = bases)
 
 @fl_app.route('/login', methods=['GET', 'POST'])
 def login():
